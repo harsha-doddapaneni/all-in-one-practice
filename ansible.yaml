@@ -6,7 +6,7 @@
     ansible.builtin.debug:
       msg: "installing nginx and to run it"
   - name: install nginx packages
-    ansible.builtin.packages:
+    ansible.builtin.package:
       name: nginx
       state: present
   - name: run nginx packages
