@@ -1,48 +1,48 @@
-# - name: nginx install and run
-#   hosts: web
-#   become: yes
-#   tasks:
-#   - name: install nginx
-#     ansible.builtin.debug:
-#       msg: "installing nginx and to run it"
-#   - name: install nginx packages
-#     ansible.builtin.package:
-#       name: nginx
-#       state: present
-#   - name: run nginx packages
-#     ansible.builtin.service:
-#       name: nginx
-#       state: started
-#       enabled: yes
+- name: nginx install and run
+  hosts: web
+  become: yes
+  tasks:
+  - name: install nginx
+    ansible.builtin.debug:
+      msg: "installing nginx and to run it"
+  - name: install nginx packages
+    ansible.builtin.package:
+      name: nginx
+      state: present
+  - name: run nginx packages
+    ansible.builtin.service:
+      name: nginx
+      state: started
+      enabled: yes
 
-# - name: install nginx
-#   hosts: web
-#   become: yes
-#   tasks:
-#   - name: install nginx if redhat
-#     ansible.builtin.dnf:
-#       name: nginx
-#       state: present
-#     when: ansible_os_family == "RedHat"
-#   - name: install nginx if debain
-#     ansible.builtin.apt:
-#       name: nginx
-#       state: present
-#     when: ansible_os_family == "Debain"
+- name: install nginx
+  hosts: web
+  become: yes
+  tasks:
+  - name: install nginx if redhat
+    ansible.builtin.dnf:
+      name: nginx
+      state: present
+    when: ansible_os_family == "RedHat"
+  - name: install nginx if debain
+    ansible.builtin.apt:
+      name: nginx
+      state: present
+    when: ansible_os_family == "Debain"
 
-# - name: installing packages
-#   hosts: web
-#   become: yes
-#   tasks:
-#   - name: installing multiple packages
-#     ansible.builtin.package:
-#       name: "{{ item }}"
-#       state: present
-#     loop:
-#     - mysql
-#     - nginx
-#     - postfix
-#     - httpd
+- name: installing packages
+  hosts: web
+  become: yes
+  tasks:
+  - name: installing multiple packages
+    ansible.builtin.package:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - mysql
+    - nginx
+    - postfix
+    - httpd
 
 - name: create ec2 and r53
   hosts: local
