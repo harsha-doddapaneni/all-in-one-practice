@@ -43,3 +43,24 @@
     - nginx
     - postfix
     - httpd
+
+- name: create ec2 and r53
+  hosts: local
+  connection: local
+  vars:
+    subnet_id: "subnet-006b392f9429ec396"
+    sg_id: "sg-0fe656c7eda0c607b"
+    ami_id: "ami-09c813fb71547fc4f"
+    instances:
+    - mysql
+    - backend
+    - frontend
+  tasks:
+  - name: create ec2 instances
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      vpc_subnet_id: "{{ subnet_id }}"
+      security_group: "{{ sg_id }}"
+      image_id: "{{ ami_id }}"
+    loop: "{{ instances }}"
+    register: ec2_instances
