@@ -4,7 +4,7 @@
   tasks:
   - name: install nginx
     ansible.builtin.debug:
-      msg: installing nginx and to run it
+      msg: "installing nginx and to run it"
   - name: install nginx packages
     ansible.builtin.packages:
       name: nginx
