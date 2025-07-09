@@ -46,3 +46,7 @@ variable "ingress_cidr" {
     default = ["0.0.0.0/0"]
     type = list(string)
 }
+
+variable "environment" {
+    default = "prod"
+}
