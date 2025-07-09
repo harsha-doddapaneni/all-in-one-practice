@@ -27,3 +27,22 @@ variable "sg_description" {
     type = string
     default = "allow port no 22 for ssh access"
 }
+
+variable "from_port" {
+    default = 22
+    type = number
+}
+
+variable "to_port" {
+    default = 22
+    type = number
+}
+
+variable "protocol" {
+    default = "tcp"
+}
+
+variable "ingress_cidr" {
+    default = ["0.0.0.0/0"]
+    type = list(string)
+}
