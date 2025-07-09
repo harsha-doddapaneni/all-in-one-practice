@@ -2,7 +2,7 @@ resource "aws_instance" "backend" {
 
     count = length(var.instance_names)
     ami = var.ami_id
-    instance_type = var.environment == "prod" ? "t3.small" : "t3.micro"
+    instance_type = "t3.small"
     vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id]
     tags = {
         Name = var.instance_names[count.index]
