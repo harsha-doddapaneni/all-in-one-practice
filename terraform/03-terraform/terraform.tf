@@ -1,4 +1,4 @@
-resource "aws_instance" "backend" {
+resource "aws_instance" "expense" {
 
     count = length(var.instance_names)
     ami = var.ami_id
