@@ -36,3 +36,39 @@ do
         echo "$package is already installed...nothing to do"
     fi
 done
+
+
+USERID=$(id -u)
+R="\e[31m"
+G="\e[32m"
+N="\e[0m"
+
+CHECK_ROOT() {
+    if [ $USERID -ne 0 ]
+    then
+        echo "Run with root privelages"
+        exit 1
+    fi
+}
+
+VALIDATE () {
+    if [ $? -ne 0 ]
+    then
+        echo -e "$2 is ..$R FAILED $N"
+    else
+        echo -e "$2 is ..$G SUCCESS $G"
+    fi
+}
+CHECK_ROOT
+
+for package in $@
+do
+    dnf list installed $package
+    if [ $? -ne 0 ]
+    then
+        echo "$package is not installed going to install it"
+        dnf install $package -y
+    else
+        echo "$package is already installed"
+    fi
+done
