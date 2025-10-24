@@ -3,27 +3,22 @@
   become: yes
   tasks:
   - name: installing multiple packages
-    tasks:
-    - name: instll all
-      ansible.builtin.package:
-        name: "{{ item }}"
-        state: present
-    - name:
-      ansible.builtin.service:
-        name: "{{ item }}"
-        state: started
+    ansible.builtin.package:
+      name: "{{ item }}"
+      state: present
     loop:
     - mysql
     - nginx
     - postfix
     - httpd
 
-  # - name: runnig multiple packages
-  #   ansible.builtin.service:
-  #     name: "{{ item }}"
-  #     state: started
-  #   loop:
-  #   - mysql
-  #   - nginx
-  #   - postfix
-  #   - httpd
+  - name: runnig multiple packages
+    ansible.builtin.service:
+      name: "{{ item }}"
+      state: started
+      enabled: yes
+    loop:
+    - mysql
+    - nginx
+    - postfix
+    - httpd
