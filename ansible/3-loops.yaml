@@ -18,7 +18,5 @@
       state: started
       enabled: yes
     loop:
-    - mysql
     - nginx
     - postfix
-    - httpd
