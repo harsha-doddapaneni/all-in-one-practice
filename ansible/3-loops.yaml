@@ -6,8 +6,21 @@
     ansible.builtin.package:
       name: "{{ item }}"
       state: present
+    ansible.builtin.service:
+      name: "{{ item }}"
+      state: started
     loop:
     - mysql
     - nginx
     - postfix
     - httpd
+
+  # - name: runnig multiple packages
+  #   ansible.builtin.service:
+  #     name: "{{ item }}"
+  #     state: started
+  #   loop:
+  #   - mysql
+  #   - nginx
+  #   - postfix
+  #   - httpd
