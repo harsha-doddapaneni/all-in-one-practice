@@ -1,8 +1,8 @@
 resource "aws_instance" "terraform" {
 
     ami = var.ami_id
-    instance_type = var.instance_type
-    #instance_type = var.environment == "prod" ? "t3.small" : "t3.micro"
+    #instance_type = var.instance_type
+    instance_type = var.environment == "prod" ? "t3.small" : "t3.micro"
     vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id]
     tags = var.tags
 }
