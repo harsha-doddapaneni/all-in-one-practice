@@ -3,10 +3,10 @@ variable "ami_id" {
   default     = "ami-09c813fb71547fc4f"
 }
 
-# variable "instance_type" {
-#     type = string
-#     default = "t2.micro"
-# }
+variable "instance_type" {
+    type = string
+    #default = "t2.micro"
+}
 
 variable "tags" {
     type = map
