@@ -3,3 +3,8 @@ output "public_ip" {
   sensitive = false
   description = "This is public ip of instance"
 }
+
+
+output "ami_id" {
+    value = data.aws_ami.DevOps.id
+}
