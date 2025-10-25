@@ -13,16 +13,16 @@ resource "aws_security_group" "allow_ssh_terraform" {
     egress {
         from_port = var.from_port
         to_port = var.to_port
-        protocol = var.protocol
-        cidr_blocks = var.ingress_cidr
+        protocol = "-1"
+        cidr_blocks = var.egress_cidr
         ipv6_cidr_blocks = ["::/0"]
     }
 
     ingress {
         from_port = 22
         to_port = 22
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        protocol = var.protocol
+        cidr_blocks = var.ingress_cidr
         ipv6_cidr_blocks = ["::/0"]
     }
     tags = var.tags
